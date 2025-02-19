@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Orçamento - CollabGeo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* LOGO NO CANTO ESQUERDO DO MENU */
+    .logo-container {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      z-index: 999; /* Para ficar acima dos botões */
+    }
+    .logo-container img {
+      max-width: 100px;
+      height: auto;
+    }
+
+    /* BARRA DE NAVEGAÇÃO - ABAS (NÍVEL SUPERIOR) */
+    .tab {
+      /* Deixamos espaço à esquerda para o logo */
+      margin-left: 120px; /* Ajuste conforme o tamanho da logo */
+      background-color: #f1f1f1;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+      text-align: center;
+      position: relative; /* Para permitir que a logo "flutue" */
+    }
+    .tab button {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0 5px;
+    }
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* CONTEÚDO DAS ABAS DE NÍVEL SUPERIOR */
+    .tabcontent {
+      display: none; /* Oculto por padrão */
+      padding: 20px;
+    }
+
+    /* SUBABAS (PARA ORÇAMENTO VOP E COP) */
+    .subtab {
+      background-color: #eee;
+      border-bottom: 1px solid #aaa;
+      padding: 8px 0;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .subtab button {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 14px;
+      transition: 0.3s;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 3px;
+    }
+    .subtab button:hover {
+      background-color: #ccc;
+    }
+    .subtab button.active {
+      background-color: #bbb;
+    }
+
+    /* CONTEÚDO DAS SUBABAS */
+    .subtabcontent {
+      display: none; /* Oculto por padrão */
+      padding: 10px 0 0 0;
+    }
+
+    /* TABELAS E ESTILOS GERAIS */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f7f7f7;
+    }
+    .subtotal {
+      background-color: #e8f5e9;
+      font-weight: bold;
+    }
+    .total {
+      background-color: #c8e6c9;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .note {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* RODAPÉ */
+    #footer {
+      margin: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+    }
+    #footer img {
+      display: block;
+      margin: 0 auto;
+      max-width: 200px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- LOGO FIXO NO CANTO ESQUERDO SUPERIOR -->
+<div class="logo-container">
+  <img id="logoTopo" src="https://github.com/thomxavier/imagem_Collabgeo/blob/main/Logo%203%20Colorida%20-%20Compacta%202%20.png?raw=true">
+</div>
+
+<!-- MENU DE ABAS (NÍVEL SUPERIOR) -->
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'apresentacaoCollabGeo')" id="defaultOpen">Apresentação CollabGeo</button>
+  <button class="tablinks" onclick="openTab(event, 'perspectivasMetodologicas')">Perspectivas Metodológicas</button>
+  <button class="tablinks" onclick="openTab(event, 'abaVOP')">Orçamento VOP</button>
+  <button class="tablinks" onclick="openTab(event, 'abaCOP')">Orçamento COP</button>
+  <button class="tablinks" onclick="openTab(event, 'abaResumoGeral')">Resumo Final Geral</button>
+</div>
+
+<!-- ABA 1: APRESENTAÇÃO COLLABGEO -->
+<div id="apresentacaoCollabGeo" class="tabcontent">
+  <h2>Apresentação CollabGeo</h2>
+  <p>
+    Na interseção entre inovação e sustentabilidade, a Collabgeo se
+    destaca pela expertise especializada e pelo compromisso com a
+    transparência. Combinamos conhecimento técnico qualificado
+    com soluções colaborativas eficientes, sempre focadas em
+    construir um futuro descentralizado e impactante.
+  </p>
+  <p>
+    Oferecemos serviços de alta qualidade, com clareza e praticidade,
+    para clientes que buscam não apenas resultados, mas também
+    transformação positiva. Aqui, a tecnologia encontra propósito, e
+    cada projeto é uma oportunidade de criar mudanças significativas.
+  </p>
+  <p>
+    Este orçamento foi cuidadosamente elaborado para contemplar as
+    áreas de Recursos Humanos, Logística &amp; Deslocamento, Hospedagem &amp;
+    Alimentação, além de prever valores referentes a impostos, seguros,
+    lucros e despesas extras. Apresentamos de forma clara cada etapa
+    e custo, evidenciando nosso compromisso com a transparência e a
+    eficiência na execução dos serviços.
+  </p>
+  <p>
+    Reafirmamos nosso compromisso em entregar excelência em todas
+    as frentes, garantindo que cada fase do projeto seja conduzida
+    com responsabilidade socioambiental e resultados sólidos. 
+    Seguimos à disposição para esclarecer qualquer dúvida e 
+    colaborar para que o seu projeto alcance seu máximo potencial.
+  </p>
+</div>
+
+<!-- ABA 2: PERSPECTIVAS METODOLÓGICAS -->
+<div id="perspectivasMetodologicas" class="tabcontent">
+  <h2>Perspectivas Metodológicas</h2>
+  <p>
+    A proposta de trabalho que apresentamos busca garantir a qualidade e a legitimidade 
+    do processo de licenciamento ambiental dos complexos eólicos, por meio de uma 
+    abordagem que alia rigor técnico e participação social. Inicialmente, a complementação 
+    da lista de partes interessadas surge como etapa crucial para assegurar a representatividade 
+    de todos os atores que podem ser direta ou indiretamente afetados pelos empreendimentos. 
+    Acreditamos ser essencial, a partir das recomendações de <a href="#refFreeman1984">Freeman (2010)</a>, 
+    mapear e incluir grupos sociais, organizações governamentais, não governamentais e comunidades 
+    locais em um processo contínuo de identificação e envolvimento. Esse mapeamento visa não apenas 
+    conferir transparência às ações, mas também fortalecer o relacionamento com diferentes segmentos, 
+    abrindo canais de comunicação e de colaboração.
+  </p>
+  <p>
+    Em seguida, a mobilização junto às partes interessadas para entrevistas e oficinas 
+    constitui uma estratégia essencial de aproximação. Ao convocarmos e engajarmos líderes 
+    comunitários, associações e demais representantes locais, garantimos que as informações 
+    coletadas sejam relevantes e estejam alinhadas à realidade sociocultural de cada região. 
+    Essa abordagem participativa dialoga com metodologias de extensão rural sugeridas por 
+    <a href="#refChambers1994">Chambers (1994)</a>, buscando estabelecer uma comunicação direta 
+    e horizontal, na qual as populações locais não sejam meras “fontes de dados”, mas atuem 
+    como parceiras que contribuem com conhecimentos e experiências valiosas.
+  </p>
+  <p>
+    A execução das atividades de campo é planejada para abranger entrevistas semiestruturadas, 
+    pesquisas de opinião, percepção e levantamento de pontos de visagem, com roteiros cuidadosamente 
+    elaborados para permitir flexibilidade na coleta de dados e profundidade na análise dos resultados. 
+    A adoção de entrevistas semiestruturadas segue as práticas descritas por 
+    <a href="#refBernard2011">Bernard (2006)</a>, que enfatiza a importância de um roteiro-base consistente, 
+    aliado à capacidade de adaptar perguntas a cada interlocutor. Além disso, para municípios com atividade 
+    pesqueira industrial, prevê-se uma complementação do diagnóstico ambiental, aprofundando o entendimento 
+    sobre a dinâmica da pesca industrial, incluindo a caracterização das frotas, dos métodos de captura e da 
+    cadeia produtiva. Esse cuidado encontra respaldo em diretrizes de organismos internacionais, como a 
+    <a href="#refFAO">FAO</a>, que reforçam a necessidade de conhecer a complexidade das atividades de pesca 
+    para subsidiar decisões de licenciamento mais assertivas e socialmente justas.
+  </p>
+  <p>
+    No âmbito do Diagnóstico Socioambiental Participativo (DSAP), propõe-se a execução de três etapas que 
+    contemplam tanto a preparação de materiais comunicativo-pedagógicos, quanto a realização de oficinas 
+    para avaliação de impactos e proposição de medidas mitigadoras. Essa dinâmica de diálogo segue os 
+    princípios defendidos por <a href="#refChambers2002">Chambers (2002)</a> em sua abordagem de planejamento 
+    participativo, assegurando que as comunidades afetadas tenham voz ativa na identificação de problemas 
+    e na construção de soluções. A partir dessa prática, torna-se possível aliar a expertise técnica com o 
+    conhecimento local, resultando em ações de mitigação e compensação mais aderentes às realidades sociais, 
+    culturais e ambientais de cada área. Além disso, as oficinas de DSAP são organizadas de modo a garantir 
+    a devolutiva dos resultados às comunidades e o engajamento para a continuidade do controle social, o que 
+    fortalece a legitimidade do processo ao longo de todas as fases de implantação e operação dos empreendimentos.
+  </p>
+  <p>
+    Paralelamente, o levantamento de desembarque pesqueiro em quatro campanhas (duas em período de safra e 
+    duas em entressafra) visa coletar dados primários consistentes sobre o volume de captura, as espécies 
+    envolvidas, as técnicas aplicadas e a importância socioeconômica da pesca para as comunidades locais. 
+    A preparação dos materiais de campo e a realização da coleta de dados seguem protocolos reconhecidos 
+    por órgãos nacionais e internacionais (<a href="#refFAO">FAO</a>, <a href="#refIBAMA">IBAMA</a>), prezando 
+    pela padronização e confiabilidade das informações. Dessa forma, busca-se retratar com fidelidade a 
+    variabilidade temporal e espacial da pesca, de modo a oferecer subsídios sólidos para a tomada de 
+    decisões no licenciamento.
+  </p>
+  <p>
+    No decorrer de todas essas fases, empenhamo-nos em manter um registro e histórico detalhado das atividades 
+    de campo, incluindo fichas específicas, registros fotográficos e anotações gerais, além de georreferenciamento 
+    e espacialização dos dados sempre que possível. Esse cuidado assegura a rastreabilidade das informações, 
+    facilitando análises subsequentes e garantindo a transparência do processo. Ao final de cada campanha, será 
+    elaborado um relatório técnico que sistematize e apresente de maneira clara e objetiva todos os resultados 
+    obtidos, de modo a orientar tanto as instituições licenciadoras quanto as comunidades participantes.
+  </p>
+  <p>
+    Por fim, todo esse escopo será cuidadosamente aplicado a cada um dos complexos eólicos, adequando as 
+    metodologias e os recursos de equipe a partir das particularidades locais. Com isso, reforçamos nosso 
+    compromisso em fornecer diagnósticos ambiental e social robustos, embasados em metodologias reconhecidas, 
+    em bibliografia consolidada e, sobretudo, em processos participativos que valorizem as percepções e os 
+    saberes das populações diretamente envolvidas.
+  </p>
+  <p>
+    Concluímos ressaltando que cada uma das etapas descritas é pautada pela busca incessante das abordagens 
+    mais adequadas ao contexto socioambiental, assegurando qualidade técnica, legitimidade institucional e 
+    engajamento das comunidades. Nosso compromisso é viabilizar, com competência e responsabilidade, todas as 
+    ações necessárias para o correto desenvolvimento dos estudos de licenciamento, promovendo a transparência 
+    dos resultados e fortalecendo a confiança e a cooperação entre os diferentes atores envolvidos.
+  </p>
+
+  <h3>Referências (ABNT)</h3>
+  <p>
+    <strong><a name="refFreeman1984"></a>Freeman RE.</strong>. Strategic Management: A Stakeholder Approach. Cambridge University Press; 2010. 
+    <a href="https://doi.org/10.1017/CBO9781139192675" target="_blank">[Link]</a>
+  </p>
+  <p>
+    <strong><a name="refChambers1994"></a>CHAMBERS, R.</strong>. The origins and practice of participatory rural appraisal. World Development, 
+    22(7), 953-969, 1994. 
+    <a href="https://doi.org/10.1016/0305-750X(94)90141-4" target="_blank">[Link]</a>
+  </p>
+  <p>
+    <strong><a name="refChambers2002"></a>CHAMBERS, R.</strong>. Participatory Workshops: A Sourcebook of 21 Sets of Ideas &amp; Activities. London: Earthscan, 2012.
+    <a href="https://doi.org/10.4324/9781849772136" target="_blank">[Link]</a>
+  </p>
+  <p>
+    <strong><a name="refBernard2011"></a>BERNARD, H. R.</strong>. Research methods in anthropology: Qualitative and quantitative approaches (4th ed.), 2006. 
+    AltaMira Press. 
+    <a href="http://ndl.ethernet.edu.et/bitstream/123456789/40820/1/17.pdf.pdf" target="_blank">[Link]</a>
+  </p>
+  <p>
+    <strong><a name="refFAO"></a>FAO</strong>. Food and Agriculture Organization. 
+    <a href="http://www.fao.org/home/en/" target="_blank">[Link]</a>
+  </p>
+  <p>
+    <strong><a name="refIBAMA"></a>IBAMA</strong>. Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis. 
+    <a href="https://www.ibama.gov.br/" target="_blank">[Link]</a>
+  </p>
+</div>
+
+<!-- ABA 3: ORÇAMENTO VOP -->
+<div id="abaVOP" class="tabcontent">
+  <h2>Orçamento VOP</h2>
+
+  <!-- SUBABAS VOP -->
+  <div class="subtab">
+    <button class="subtablinks" onclick="openSubTab(event, 'vopRH')" id="defaultVOP">Recursos Humanos</button>
+    <button class="subtablinks" onclick="openSubTab(event, 'vopLogistica')">Logística &amp; Deslocamento</button>
+    <button class="subtablinks" onclick="openSubTab(event, 'vopHospedagem')">Hospedagem &amp; Alimentação</button>
+    <button class="subtablinks" onclick="openSubTab(event, 'vopResumo')">Resumo</button>
+  </div>
+
+  <!-- SUBABA VOP - RH -->
+  <div id="vopRH" class="subtabcontent">
+    <h3>VOP - Recursos Humanos</h3>
+    <p class="note">Contratação dos seguintes cargos: 1 Gerente, 1 Esp. Socioambiental e 2 Analistas (CLT), 1 Antropologia e 1 Design Gráfico (PJ). As contratações CLT visam a disponibilidade integral dos contratados. Já a contratação PJ objetiva a participação dos respectivos profissionais em momentos específicos.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Cargo</th>
+          <th>Qtd.</th>
+          <th>Salário (R$/mês)</th>
+          <th>Meses</th>
+          <th>Subtotal (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gerente de Campo (CLT)</td>
+          <td>1</td>
+          <td>6.000</td>
+          <td>18</td>
+          <td><span id="vopGerSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Especialista Socioambiental (CLT)</td>
+          <td>1</td>
+          <td>5.000</td>
+          <td>18</td>
+          <td><span id="vopSocioSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Analista em Meio Ambiente (CLT)</td>
+          <td>2</td>
+          <td>3.000</td>
+          <td>18</td>
+          <td><span id="vopAnalSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Especialista em Antropologia (PJ)</td>
+          <td>1</td>
+          <td>8.000</td>
+          <td>6</td>
+          <td><span id="vopAntSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Especialista em Design Gráfico (PJ)</td>
+          <td>1</td>
+          <td>8.000</td>
+          <td>5</td>
+          <td><span id="vopDesignSubtotal">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Encargos (40%)</strong> para CLT, PJ não sofre encargos.</p>
+    <p>Subtotal Salários CLT: <span id="vopRHSalarios">-</span></p>
+    <p>Encargos CLT (40%): <span id="vopRHEncargos">-</span></p>
+    <p>Subtotal Serviços PJ: <span id="vopPJSubtotal">-</span></p>
+    <h3 class="subtotal">Subtotal RH (VOP): <span id="vopRHSubtotalFinal">-</span></h3>
+  </div>
+
+  <!-- SUBABA VOP - LOGISTICA -->
+  <div id="vopLogistica" class="subtabcontent">
+    <h3>VOP - Logística &amp; Deslocamento</h3>
+    <p class="note">Considerar 2 veículos para o VOP.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Qtd.</th>
+          <th>Valor (R$)</th>
+          <th>Meses</th>
+          <th>Subtotal (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Veículos 4x4 (Mensal)</td>
+          <td>2</td>
+          <td>6.000</td>
+          <td>12</td>
+          <td><span id="vopVeicSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Combustível (Mensal)</td>
+          <td>2</td>
+          <td>2.500</td>
+          <td>12</td>
+          <td><span id="vopCombSubtotal">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="subtotal">Subtotal Logística (VOP): <span id="vopLogSubtotal">-</span></h3>
+  </div>
+
+  <!-- SUBABA VOP - HOSPEDAGEM -->
+  <div id="vopHospedagem" class="subtabcontent">
+    <h3>VOP - Hospedagem &amp; Alimentação</h3>
+    <p class="note">Hospedagem = R$200/dia; Alimentação = R$60/dia.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Equipe VOP</th>
+          <th>Nº Pessoas</th>
+          <th>Dias</th>
+          <th>Subtotal (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Campo VOP</td>
+          <td>5</td>
+          <td>157</td>
+          <td><span id="vopHospSubtotal">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="subtotal">Subtotal H&amp;A (VOP): <span id="vopHAsubtotal">-</span></h3>
+  </div>
+
+  <!-- SUBABA VOP - RESUMO -->
+  <div id="vopResumo" class="subtabcontent">
+    <h3>Resumo Orçamento VOP</h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>Recursos Humanos</th>
+          <td><span id="vopResumoRH">-</span></td>
+        </tr>
+        <tr>
+          <th>Logística &amp; Deslocamento</th>
+          <td><span id="vopResumoLog">-</span></td>
+        </tr>
+        <tr>
+          <th>Hospedagem &amp; Alimentação</th>
+          <td><span id="vopResumoHA">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Subtotal (R$): <span id="vopResumoSubtotal">-</span></h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>Impostos (15%)</th>
+          <td><span id="vopResumoImpostos">-</span></td>
+        </tr>
+        <tr>
+          <th>Seguros (5%)</th>
+          <td><span id="vopResumoSeguros">-</span></td>
+        </tr>
+        <tr>
+          <th>Lucro (15%)</th>
+          <td><span id="vopResumoLucro">-</span></td>
+        </tr>
+        <tr>
+          <th>Despesas Extras (2,5%)</th>
+          <td><span id="vopResumoExtras">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="total">TOTAL VOP (R$): <span id="vopTotalFinal">-</span></h2>
+  </div>
+</div>
+
+<!-- ABA 4: ORÇAMENTO COP -->
+<div id="abaCOP" class="tabcontent">
+  <h2>Orçamento COP</h2>
+
+  <!-- SUBABAS COP -->
+  <div class="subtab">
+    <button class="subtablinks" onclick="openSubTab(event, 'copRH')" id="defaultCOP">Recursos Humanos</button>
+    <button class="subtablinks" onclick="openSubTab(event, 'copLogistica')">Logística &amp; Deslocamento</button>
+    <button class="subtablinks" onclick="openSubTab(event, 'copHospedagem')">Hospedagem &amp; Alimentação</button>
+    <button class="subtablinks" onclick="openSubTab(event, 'copResumo')">Resumo</button>
+  </div>
+
+  <!-- SUBABA COP - RH -->
+  <div id="copRH" class="subtabcontent">
+    <h3>COP - Recursos Humanos</h3>
+    <p class="note">Contratação dos seguintes cargos: 1 Coordenador, 1 Gerente, 2 Socioambientais e 3 Analistas (CLT), 1 Antropologia e 1 Design Gráfico (PJ). As contratações CLT visam a disponibilidade integral dos contratados. Já a contratação PJ objetiva a participação dos respectivos profissionais em momentos específicos.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Cargo</th>
+          <th>Qtd.</th>
+          <th>Salário (R$/mês)</th>
+          <th>Meses</th>
+          <th>Subtotal (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Coordenador Geral (CLT)</td>
+          <td>1</td>
+          <td>8.000</td>
+          <td>18</td>
+          <td><span id="copCoordSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Gerente de Campo (CLT)</td>
+          <td>1</td>
+          <td>6.000</td>
+          <td>18</td>
+          <td><span id="copGerSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Especialista Socioambiental (CLT)</td>
+          <td>2</td>
+          <td>5.000</td>
+          <td>18</td>
+          <td><span id="copSocioSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Analista em Meio Ambiente (CLT)</td>
+          <td>3</td>
+          <td>3.000</td>
+          <td>18</td>
+          <td><span id="copAnalSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Especialista em Antropologia (PJ)</td>
+          <td>1</td>
+          <td>8.000</td>
+          <td>6</td>
+          <td><span id="copAntSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Especialista em Design Gráfico (PJ)</td>
+          <td>1</td>
+          <td>8.000</td>
+          <td>5</td>
+          <td><span id="copDesignSubtotal">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Encargos (40%)</strong> para CLT, PJ não sofre encargos.</p>
+    <p>Subtotal Salários CLT: <span id="copRHSalarios">-</span></p>
+    <p>Encargos CLT (40%): <span id="copRHEncargos">-</span></p>
+    <p>Subtotal Serviços PJ: <span id="copPJSubtotal">-</span></p>
+    <h3 class="subtotal">Subtotal RH (COP): <span id="copRHSubtotalFinal">-</span></h3>
+  </div>
+
+  <!-- SUBABA COP - LOGISTICA -->
+  <div id="copLogistica" class="subtabcontent">
+    <h3>COP - Logística &amp; Deslocamento</h3>
+    <p class="note">Considerar 2 veículos para o COP.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Qtd.</th>
+          <th>Valor (R$)</th>
+          <th>Meses</th>
+          <th>Subtotal (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Veículos 4x4 (Mensal)</td>
+          <td>2</td>
+          <td>6.000</td>
+          <td>18</td>
+          <td><span id="copVeicSubtotal">-</span></td>
+        </tr>
+        <tr>
+          <td>Combustível (Mensal)</td>
+          <td>2</td>
+          <td>2.500</td>
+          <td>18</td>
+          <td><span id="copCombSubtotal">-</span></td>
+        </tr>
+      </tbody>
+    <p class="note">As eventuais viagens da equipe por via aérea já estão consideradas no cálculo de despesas extras, assim como o aluguel de veículo específico para as ações.</p>
+    </table>
+    <h3 class="subtotal">Subtotal Logística (COP): <span id="copLogSubtotal">-</span></h3>
+  </div>
+
+  <!-- SUBABA COP - HOSPEDAGEM -->
+  <div id="copHospedagem" class="subtabcontent">
+    <h3>COP - Hospedagem &amp; Alimentação</h3>
+    <p class="note">Hospedagem = R$200/dia; Alimentação = R$60/dia.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Equipe COP</th>
+          <th>Nº Pessoas</th>
+          <th>Dias</th>
+          <th>Subtotal (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Campo COP</td>
+          <td>8</td>
+          <td>230</td>
+          <td><span id="copHospSubtotal">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="subtotal">Subtotal H&amp;A (COP): <span id="copHAsubtotal">-</span></h3>
+  </div>
+
+  <!-- SUBABA COP - RESUMO -->
+  <div id="copResumo" class="subtabcontent">
+    <h3>Resumo Orçamento COP</h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>Recursos Humanos</th>
+          <td><span id="copResumoRH">-</span></td>
+        </tr>
+        <tr>
+          <th>Logística &amp; Deslocamento</th>
+          <td><span id="copResumoLog">-</span></td>
+        </tr>
+        <tr>
+          <th>Hospedagem &amp; Alimentação</th>
+          <td><span id="copResumoHA">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Subtotal (R$): <span id="copResumoSubtotal">-</span></h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>Impostos (15%)</th>
+          <td><span id="copResumoImpostos">-</span></td>
+        </tr>
+        <tr>
+          <th>Seguros (5%)</th>
+          <td><span id="copResumoSeguros">-</span></td>
+        </tr>
+        <tr>
+          <th>Lucro (15%)</th>
+          <td><span id="copResumoLucro">-</span></td>
+        </tr>
+        <tr>
+          <th>Despesas Extras (2,5%)</th>
+          <td><span id="copResumoExtras">-</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="total">TOTAL COP (R$): <span id="copTotalFinal">-</span></h2>
+  </div>
+</div>
+
+<!-- ABA 5: RESUMO FINAL GERAL -->
+<div id="abaResumoGeral" class="tabcontent">
+  <h2>Resumo Final Geral</h2>
+  <p>
+    Abaixo, apresentamos o valor final do Orçamento VOP e do Orçamento COP, 
+    cada um com seus impostos e percentuais já aplicados. Em seguida, 
+    exibimos o Total Geral (soma de ambos).
+  </p>
+  <table>
+    <tbody>
+      <tr>
+        <th>Total Final VOP (R$)</th>
+        <td><span id="resumoGeralVOP">-</span></td>
+      </tr>
+      <tr>
+        <th>Total Final COP (R$)</th>
+        <td><span id="resumoGeralCOP">-</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 class="total">TOTAL GERAL (R$): <span id="resumoGeralTotal">-</span></h3>
+</div>
+
+<!-- RODAPÉ -->
+<div id="footer">
+  <img id="logoProjeto" src="https://github.com/thomxavier/imagem_Collabgeo/blob/main/Logo%201%20Colorida.png?raw=true"/>
+  <p><strong>© 2025. Todos os Direitos Reservados.</strong></p>
+  <p>Prazo de Validade do Orçamento: 90 dias</p>
+  <p>Contato: 
+    <a href="mailto:collabgeoltda@gmail.com">collabgeoltda@gmail.com</a> |
+    <a href="https://wa.me/+5584991752439" target="_blank">(85) 98416-0217</a>
+  </p>
+</div>
+
+<script>
+  /*
+    ======================================================================
+    FUNÇÕES DE CÁLCULO E FORMATAÇÃO
+    (Compatível com versões mais antigas de Safari)
+    ======================================================================
+  */
+
+  var ENCARGOS_CLT  = 0.40;
+  var IMPOSTOS      = 0.15;
+  var SEGUROS       = 0.05;
+  var LUCRO         = 0.15; // 15%
+  var EXTRAS        = 0.025; // 2,5%
+
+  var HOSPEDAGEM = 200; // R$
+  var ALIMENTACAO = 60;  // R$
+  var CUSTO_DIA   = HOSPEDAGEM + ALIMENTACAO; // 260
+
+  // Formatação manual BRL
+  function formatBRL(value) {
+    var val = parseFloat(value);
+    if (isNaN(val)) val = 0;
+    var str = val.toFixed(2).replace('.', ',');
+    var parts = str.split(',');
+    var intPart = parts[0];
+    var fracPart = parts.length > 1 ? ',' + parts[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(intPart)) {
+      intPart = intPart.replace(rgx, '$1.$2');
+    }
+    return intPart + fracPart;
+  }
+
+// Cálculo do VOP
+  function calcVOP() {
+    // RH - CLT
+    var gerCLT = 1 * 6000 * 18;
+    var socioCLT = 1 * 5000 * 18;
+    var analCLT = 2 * 3000 * 18;
+    var antCLT  = 1 * 8000 * 6;
+    var totalCLT = gerCLT + socioCLT + analCLT;
+    var encargos = totalCLT * ENCARGOS_CLT;
+
+    // PJ - Design
+    var designPJ = 1 * 8000 * 5 + 48000;
+
+    var subtotalRH = totalCLT + encargos + designPJ;
+
+    // Exibir
+    document.getElementById('vopGerSubtotal').textContent    = formatBRL(gerCLT);
+    document.getElementById('vopSocioSubtotal').textContent  = formatBRL(socioCLT);
+    document.getElementById('vopAnalSubtotal').textContent   = formatBRL(analCLT);
+    document.getElementById('vopAntSubtotal').textContent    = formatBRL(antCLT);
+    document.getElementById('vopDesignSubtotal').textContent = formatBRL(designPJ);
+
+    document.getElementById('vopRHSalarios').textContent     = formatBRL(totalCLT);
+    document.getElementById('vopRHEncargos').textContent     = formatBRL(encargos);
+    document.getElementById('vopPJSubtotal').textContent     = formatBRL(designPJ);
+    document.getElementById('vopRHSubtotalFinal').textContent= formatBRL(subtotalRH);
+
+    // LOG
+    var veic = 2 * 6000 * 12; 
+    var comb = 2 * 2500 * 12;
+    var subtotalLog = veic + comb;
+
+    document.getElementById('vopVeicSubtotal').textContent = formatBRL(veic);
+    document.getElementById('vopCombSubtotal').textContent = formatBRL(comb);
+    document.getElementById('vopLogSubtotal').textContent  = formatBRL(subtotalLog);
+
+    // H & A
+    var vopHA = 5 * 157 * CUSTO_DIA;
+    document.getElementById('vopHospSubtotal').textContent = formatBRL(vopHA);
+    document.getElementById('vopHAsubtotal').textContent   = formatBRL(vopHA);
+
+    // Resumo
+    var subVOP = subtotalRH + subtotalLog + vopHA;
+    document.getElementById('vopResumoRH').textContent  = formatBRL(subtotalRH);
+    document.getElementById('vopResumoLog').textContent = formatBRL(subtotalLog);
+    document.getElementById('vopResumoHA').textContent  = formatBRL(vopHA);
+    document.getElementById('vopResumoSubtotal').textContent = formatBRL(subVOP);
+
+    var vopImp   = subVOP * IMPOSTOS;
+    var vopSeg   = subVOP * SEGUROS;
+    var vopLucro = subVOP * LUCRO;
+    var vopExtra = subVOP * EXTRAS;
+
+    document.getElementById('vopResumoImpostos').textContent = formatBRL(vopImp);
+    document.getElementById('vopResumoSeguros').textContent  = formatBRL(vopSeg);
+    document.getElementById('vopResumoLucro').textContent    = formatBRL(vopLucro);
+    document.getElementById('vopResumoExtras').textContent   = formatBRL(vopExtra);
+
+    var vopTotal = subVOP + vopImp + vopSeg + vopLucro + vopExtra;
+    document.getElementById('vopTotalFinal').textContent = formatBRL(vopTotal);
+
+    return vopTotal;
+  }
+
+  // Cálculo do COP
+  function calcCOP() {
+    // RH - CLT
+    var coordCLT = 1 * 8000 * 18;
+    var gerCLT   = 1 * 6000 * 18;
+    var socioCLT = 2 * 5000 * 18;
+    var analCLT  = 3 * 3000 * 18;
+    var antCLT   = 1 * 8000 * 6;
+    var totalCLT = coordCLT + gerCLT + socioCLT + analCLT;
+    var encargos  = totalCLT * ENCARGOS_CLT;
+
+    // PJ - Design
+    var designPJ = 1 * 8000 * 5 + 48000;
+
+    var subtotalRH = totalCLT + encargos + designPJ;
+
+    // Exibir
+    document.getElementById('copCoordSubtotal').textContent  = formatBRL(coordCLT);
+    document.getElementById('copGerSubtotal').textContent    = formatBRL(gerCLT);
+    document.getElementById('copSocioSubtotal').textContent  = formatBRL(socioCLT);
+    document.getElementById('copAnalSubtotal').textContent   = formatBRL(analCLT);
+    document.getElementById('copAntSubtotal').textContent    = formatBRL(antCLT);
+    document.getElementById('copDesignSubtotal').textContent = formatBRL(designPJ);
+
+    document.getElementById('copRHSalarios').textContent     = formatBRL(totalCLT);
+    document.getElementById('copRHEncargos').textContent     = formatBRL(encargos);
+    document.getElementById('copPJSubtotal').textContent     = formatBRL(designPJ);
+    document.getElementById('copRHSubtotalFinal').textContent= formatBRL(subtotalRH);
+
+    // LOG
+    var veic = 2 * 6000 * 18; 
+    var comb = 2 * 2500 * 18;
+    var subtotalLog = veic + comb;
+
+    document.getElementById('copVeicSubtotal').textContent = formatBRL(veic);
+    document.getElementById('copCombSubtotal').textContent = formatBRL(comb);
+    document.getElementById('copLogSubtotal').textContent  = formatBRL(subtotalLog);
+
+    // H & A
+    var copHA = 8 * 230 * CUSTO_DIA;
+    document.getElementById('copHospSubtotal').textContent = formatBRL(copHA);
+    document.getElementById('copHAsubtotal').textContent   = formatBRL(copHA);
+
+    // Resumo
+    var subCOP = subtotalRH + subtotalLog + copHA;
+    document.getElementById('copResumoRH').textContent  = formatBRL(subtotalRH);
+    document.getElementById('copResumoLog').textContent = formatBRL(subtotalLog);
+    document.getElementById('copResumoHA').textContent  = formatBRL(copHA);
+    document.getElementById('copResumoSubtotal').textContent = formatBRL(subCOP);
+
+    var copImp   = subCOP * IMPOSTOS;
+    var copSeg   = subCOP * SEGUROS;
+    var copLucro = subCOP * LUCRO;
+    var copExtra = subCOP * EXTRAS;
+
+    document.getElementById('copResumoImpostos').textContent = formatBRL(copImp);
+    document.getElementById('copResumoSeguros').textContent  = formatBRL(copSeg);
+    document.getElementById('copResumoLucro').textContent    = formatBRL(copLucro);
+    document.getElementById('copResumoExtras').textContent   = formatBRL(copExtra);
+
+    var copTotal = subCOP + copImp + copSeg + copLucro + copExtra;
+    document.getElementById('copTotalFinal').textContent = formatBRL(copTotal);
+
+    return copTotal;
+  }
+
+  // Resumo Final Geral
+  function calcResumoGeral(vopValue, copValue) {
+    document.getElementById('resumoGeralVOP').textContent = formatBRL(vopValue);
+    document.getElementById('resumoGeralCOP').textContent = formatBRL(copValue);
+
+    var total = vopValue + copValue;
+    document.getElementById('resumoGeralTotal').textContent = formatBRL(total);
+  }
+
+  // Abertura de Abas (Nível Superior)
+  function openTab(evt, tabName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Abertura de SubAbas
+  function openSubTab(evt, subTabName) {
+    var i, stc, stl;
+    stc = document.getElementsByClassName("subtabcontent");
+    for (i = 0; i < stc.length; i++) {
+      stc[i].style.display = "none";
+    }
+    stl = document.getElementsByClassName("subtablinks");
+    for (i = 0; i < stl.length; i++) {
+      stl[i].className = stl[i].className.replace(" active", "");
+    }
+    document.getElementById(subTabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Inicialização
+  function initPage() {
+    // Aba padrão
+    document.getElementById("defaultOpen").click();
+    document.getElementById("defaultVOP").click();
+    document.getElementById("defaultCOP").click();
+
+    // Cálculos
+    var vopFinal = calcVOP();
+    var copFinal = calcCOP();
+    calcResumoGeral(vopFinal, copFinal);
+
+    // Exemplo de inserir logo
+    document.getElementById("logoTopo").src = "https://github.com/thomxavier/imagem_Collabgeo/blob/main/Logo%203%20Colorida%20-%20Compacta%202%20.png?raw=true";
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPage, false);
+  } else {
+    initPage();
+  }
+
+</script>
+</body>
+</html>
